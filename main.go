@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -27,12 +28,17 @@ var (
 	sdRegex = regexp.MustCompile("^sd[a-z]+$")
 )
 
+var (
+	listenAddr = flag.String("listen-addr", ":9541", "Address the SMART exporter should listen on")
+)
+
 func main() {
 	prometheus.MustRegister(smartValue)
 	prometheus.MustRegister(smartRawValue)
 	prometheus.MustRegister(collectorDurationValue)
+	flag.Parse()
 	http.Handle("/metrics", promhttp.Handler())
-	go http.ListenAndServe(":8080", nil)
+	go http.ListenAndServe(*listenAddr, nil)
 	db, err := drivedb.OpenDriveDb("drivedb.yaml")
 	if err != nil {
 		panic(err)
