@@ -7,7 +7,6 @@ import (
 	"math/bits"
 	"os"
 
-	"github.com/dswarbrick/smart/utils"
 	"github.com/yalue/native_endian"
 )
 
@@ -185,7 +184,7 @@ func (d *IdentifyDeviceData) Transport() (s string) {
 		s = "Serial ATA"
 
 		// TODO: Add decoding of current / max SATA speed (word 76, 77)
-		switch utils.Log2b(uint(d.TransportMajor & 0x0fff)) {
+		switch Log2b(uint(d.TransportMajor & 0x0fff)) {
 		case 0:
 			s += " ATA8-AST"
 		case 1:
