@@ -9,5 +9,3 @@ require (
 	golang.org/x/sys v0.0.0-20200602225109-6fdc65e7d980
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
-
-replace github.com/dswarbrick/smart => /home/lorenz/gohack/github.com/dswarbrick/smart
