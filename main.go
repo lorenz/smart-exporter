@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
+	"git.dolansoft.org/dolansoft/smart-exporter/drivedb"
 	"git.dolansoft.org/dolansoft/smart-exporter/smart"
-	"github.com/dswarbrick/smart/drivedb"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
