@@ -119,10 +119,7 @@ func main() {
 	prometheus.MustRegister(collectorDurationValue)
 	flag.Parse()
 	http.Handle("/metrics", promhttp.Handler())
-	go http.ListenAndServe(*listenAddr, nil)
-
-	for {
-
-		time.Sleep(1 * time.Minute)
+	if err := http.ListenAndServe(*listenAddr, nil); err != nil {
+		log.Fatalf("failed to listen: %v", err)
 	}
 }
